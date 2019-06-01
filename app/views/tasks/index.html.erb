@@ -1,0 +1,26 @@
+<h1>仕事一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>仕事名</th>
+    <th>仕事内容</th>
+  </tr>
+
+<% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.title %></td>
+    <td><%= task.content %></td>
+    <td><%= task.limit %></td>
+    <td><%= task.status %></td>
+    <td><%= task.priority %></td>
+    <td><%= link_to '詳細を確認する', task_path(task.id) %></td>
+    <td><%= link_to "仕事を編集する", edit_task_path(task.id) %></td>
+    <td><%= link_to '仕事を削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br>
+
+<%= link_to '新しく仕事を登録する', new_task_path %>
