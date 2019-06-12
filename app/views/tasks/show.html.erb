@@ -1,6 +1,8 @@
-<h1>仕事詳細画面</h1>
-	<p>仕事名: <%= @task.title %></p>
-	<p>仕事内容: <%= @task.content %></p>
-	<p>終了期限<%= @task.limit %></p>
-	<p>進捗<%= @task.status %></p>
-	<p>優先順位<%= @task.priority %></p>
+<div class="task-show">
+<div class="task-show__title"><h1><%= t("tasks.show.title") %></h1></div>
+  <p><%= t("tasks.show.taskname") %>: <%= @task.title %></p>
+	<p><%= t("tasks.show.taskcontent") %>: <%= @task.content %></p>
+	<p><%= t("tasks.show.limit") %>: <%= @task.limit %></p>
+	<p><%= t("tasks.show.status") %>: <%= @task.status %></p>
+  <p><%= t("tasks.show.priority") %>: <%= @task.priority %></p>
+</div>

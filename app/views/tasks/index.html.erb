@@ -1,9 +1,10 @@
-<h1>仕事一覧</h1>
-<p><%= notice %></p>
+<div class="task-index">
+<div class="task-index__title"><h1><%= t('tasks.index.title') %></h1></div>
+<div class="task-index__notice"><p><%= notice %></p></div>
 <table>
   <tr>
-    <th>仕事名</th>
-    <th>仕事内容</th>
+    <div class="task-index__taskname"><th><%= t('tasks.index.taskname') %></th></div>
+    <div class="task-index__taskcontent"><th><%= t('tasks.index.taskcontent') %></th></div>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -24,3 +25,4 @@
 <br>
 
 <%= link_to '新しく仕事を登録する', new_task_path %>
+</div>
