@@ -1,0 +1,17 @@
+ja:
+  tasks:
+    index:
+      title: 仕事一覧
+      taskname: 仕事名
+      taskcontent: 仕事内容
+    new:
+      title: 仕事を登録する
+    show:
+      title: 仕事詳細画面
+      taskname: 仕事名
+      taskcontent: 仕事内容
+      limit: 終了期限
+      status: 進捗
+      priority: 優先順位
+    edit:
+      title: 仕事を編集する
