@@ -4,7 +4,8 @@ describe "タスク管理機能", type: :system do
     # let(:user_a){ FactoryBot.create(:user, name: "ユーザーA", email: "a@example.com") }
     # let(:user_b){ FactoryBot.create(:user, name: "ユーザーB", email: "b@example.com") }
     let!(:task_a) { FactoryBot.create(:task, title: '最初のタスク', content: '最初のタスク', limit: '2019/06/01', status: "未着手") }#, user: user_a) 
-    
+    let!(:task_b) { FactoryBot.create(:task, title: '次のタスク', content: '次のタスク', limit: '2019/06/01', status: "未着手") }
+
     before do
       # visit login_path
       # fill_in "メールアドレス", with: login_user.email
@@ -31,6 +32,14 @@ describe "タスク管理機能", type: :system do
         # end
       # end
   end
+
+  # describe "タスクが作成日時の降順に並んでいるかのテスト" do
+  #   context "一覧表示にいったとき" do
+  #     it "タスクが作成日時の降順に並んでいる" do
+  #       expect(Task.order("created_at DESC").map(&:id)).to eq [4,3]
+  #     end
+  #   end
+  # end
 
   describe "詳細表示機能" do
     context "ユーザーAがログインしているとき" do
