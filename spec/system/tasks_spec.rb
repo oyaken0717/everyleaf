@@ -4,7 +4,7 @@ describe "タスク管理機能", type: :system do
     # let(:user_a){ FactoryBot.create(:user, name: "ユーザーA", email: "a@example.com") }
     # let(:user_b){ FactoryBot.create(:user, name: "ユーザーB", email: "b@example.com") }
     let!(:task_a) { FactoryBot.create(:task, title: '最初のタスク', content: '最初のタスク', limit: '2019/06/01', status: "未着手") }#, user: user_a) 
-    let!(:task_b) { FactoryBot.create(:task, title: '次のタスク', content: '次のタスク', limit: '2019/06/01', status: "未着手") }
+    let!(:task_b) { FactoryBot.create(:task, title: '次のタスク', content: '次のタスク', limit: '2019/06/02', status: "未着手") }
 
     before do
       # visit login_path
@@ -41,6 +41,17 @@ describe "タスク管理機能", type: :system do
   #   end
   # end
 
+  describe "終了期限の降順" do
+    context "終了期限でソートを押すと" do
+      it "終了期限順で並ぶ" do
+        click_link "終了期限でソート"
+        tasks = Task.order(limit: "ASC")
+        expect(tasks[0].limit < tasks[1].limit).to be true
+
+      end
+    end
+  end
+ 
   describe "詳細表示機能" do
     context "ユーザーAがログインしているとき" do
       # let(:login_user){ user_a }
