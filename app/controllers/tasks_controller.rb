@@ -3,6 +3,9 @@ class TasksController < ApplicationController
 
 	def index
     @tasks = Task.all.order(created_at: "DESC")
+      # if params[:task]
+      #   @tasks = @tasks.search_title(params[:task][:title])
+      # end
     @tasks = Task.all.order(limit: "ASC") if params[:"ニャホニャホ"].present?
 	end
 
