@@ -3,8 +3,9 @@ require "rails_helper"
 describe "タスク管理機能", type: :system do
     # let(:user_a){ FactoryBot.create(:user, name: "ユーザーA", email: "a@example.com") }
     # let(:user_b){ FactoryBot.create(:user, name: "ユーザーB", email: "b@example.com") }
-    let!(:task_a) { FactoryBot.create(:task, title: '最初のタスク', content: '最初のタスク', limit: '2019/06/01', status: "未着手") }#, user: user_a) 
-    let!(:task_b) { FactoryBot.create(:task, title: '次のタスク', content: '次のタスク', limit: '2019/06/02', status: "未着手") }
+    let!(:task_a) { FactoryBot.create(:task, title: '最初のタスク', content: '最初のタスク', limit: '2019/06/01', status: "未着手", priority: "低") }#, user: user_a) 
+    let!(:task_b) { FactoryBot.create(:task, title: '次のタスク', content: '次のタスク', limit: '2019/06/02', status: "未着手", priority: "中") }
+    let!(:task_c) { FactoryBot.create(:task, title: '次のタスク', content: '三番目のタスク', limit: '2019/06/03', status: "未着手", priority: "高") }
 
     before do
       # visit login_path
@@ -40,6 +41,15 @@ describe "タスク管理機能", type: :system do
   #     end
   #   end
   # end
+
+  describe "タスクが優先順位の高い順に並んでいるかのテスト" do
+    context "一覧表示に行ったとき" do
+      it "タスクが優先順位に基づいてならんでいる" do
+        click_on "優先順位でソート"
+        expect(Task.order("priority DESC").map(&:priority)).to eq ["高","中","低"]
+      end
+    end
+  end
 
   describe "終了期限の降順" do
     context "終了期限でソートを押すと" do

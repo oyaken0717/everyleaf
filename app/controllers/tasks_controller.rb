@@ -13,6 +13,7 @@ class TasksController < ApplicationController
       #   @tasks = @tasks.search_status(params[:task][:status]) if params[:task][:status].present?
       # end
     @tasks = Task.all.order(limit: "ASC") if params[:"ニャホニャホ"].present?
+    @tasks = Task.all.order(priority: "ASC") if params[:"priority"].present?
 	end
 
   def new
