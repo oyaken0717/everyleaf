@@ -2,10 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
 	def index
-    @tasks = Task.all.order(created_at: "DESC")
-    
+    @tasks = Task.all.order(created_at: "DESC").page(params[:page]).per(3)
+
     @search = Task.search(params[:q])
-    @tasks = @search.result
+    @tasks = @search.result.page(params[:page]).per(3)
     
       # if params[:task]
       #   @tasks = @tasks.search_title(params[:task][:title]).search_status(params[:task][:status]) if params[:task][:title].present? && params[:task][:status].present? 
@@ -13,6 +13,7 @@ class TasksController < ApplicationController
       #   @tasks = @tasks.search_status(params[:task][:status]) if params[:task][:status].present?
       # end
     @tasks = Task.all.order(limit: "ASC") if params[:"ニャホニャホ"].present?
+    #@tasks = Task.all.order(priority: "ASC").page(params[:page]).per(3) if params[:"priority"].present?
     @tasks = Task.all.order(priority: "ASC") if params[:"priority"].present?
 	end
 
