@@ -26,21 +26,21 @@
     <div class="task-index__taskcontent"><th><%= t('tasks.index.taskcontent') %></th></div>
   </tr>
 
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.title %></td>
-    <td><%= task.content %></td>
-    <td><%= task.limit %></td>
-    <td><%= task.status %></td>
-    <td><%= task.priority %></td>
-    <td><%= link_to '詳細を確認する', task_path(task.id) %></td>
-    <td><%= link_to "仕事を編集する", edit_task_path(task.id) %></td>
-    <td><%= link_to '仕事を削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
-
-  </tr>
-<% end %>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.content %></td>
+      <td><%= task.limit %></td>
+      <td><%= task.status %></td>
+      <td><%= task.priority %></td>
+      <td><%= link_to '詳細を確認する', task_path(task.id) %></td>
+      <td><%= link_to "仕事を編集する", edit_task_path(task.id) %></td>
+      <td><%= link_to '仕事を削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>  
+    </tr>
+  <% end %>
+  <%= paginate @tasks %>
 </table>
-
+  
 <br>
 
 <%= link_to '新しく仕事を登録する', new_task_path %>
